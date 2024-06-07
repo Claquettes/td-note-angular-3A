@@ -11,5 +11,7 @@ import { ListePassagersComponent } from '../liste-passagers/liste-passagers.comp
   styleUrls: ['./view-airfrance.component.scss']
 })
 export class ViewAirFranceComponent {
-
+  onFiltersApplied(filters: {airport: string, startDate: Date, endDate: Date}) {
+    console.log(filters);
+  }
 }

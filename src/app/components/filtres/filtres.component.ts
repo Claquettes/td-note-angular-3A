@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID, ViewEncapsulation } from '@angular/core';
+import {Component, LOCALE_ID, Output, ViewEncapsulation} from '@angular/core';
 import { MAT_DATE_RANGE_SELECTION_STRATEGY } from '@angular/material/datepicker';
 import { AEROPORTS } from './../../constants/aeroport.constant';
 import {MatInputModule} from '@angular/material/input';
@@ -12,6 +12,8 @@ import {MatCommonModule} from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -19,7 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   templateUrl: './filtres.component.html',
   styleUrls: ['./filtres.component.scss'],
-  imports: [MatIconModule, MatButtonModule, MatInputModule,
+  imports: [FormsModule, MatIconModule, MatButtonModule, MatInputModule,
     MatFormFieldModule, MatSelectModule, MatDatepickerModule, MatCommonModule, CommonModule],
   providers: [
     provideNativeDateAdapter(),
@@ -33,11 +35,14 @@ import { MatIconModule } from '@angular/material/icon';
   encapsulation: ViewEncapsulation.None
 })
 export class FiltresComponent {
+    @Output() filtersApplied = new EventEmitter<{airport: string, startDate: Date, endDate: Date}>();
 
-  /**
-   * La liste des aéroports disponibles est une constante,
-   * on n'utilise que les principaux aéroports français pour l'instant
-   */
+  selectedAirport: string = '';
+  //aujourd'hui et dans 3 jours
+  startDate: Date = new Date();
+  endDate: Date = new Date(this.startDate.getTime() + 3 * 24 * 60 * 60 * 1000);
+
+
   aeroports: IAeroport[] = AEROPORTS;
-  
+
 }
