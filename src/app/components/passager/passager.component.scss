@@ -1,0 +1,31 @@
+.passager-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+
+  .passager-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .passager-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    h2, p {
+      margin: 0 10px;
+    }
+  }
+
+  .mat-icon {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+}

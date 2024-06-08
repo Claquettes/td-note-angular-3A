@@ -4,7 +4,8 @@ import {ListeVolsComponent} from '../liste-vols/liste-vols.component';
 import {ListePassagersComponent} from '../liste-passagers/liste-passagers.component';
 import {VolService} from "../../services/vol.service";
 import {Vol} from "../../models/vol.model";
-
+import {Passager} from "../../models/passager.model";
+import {PassagerService} from "../../services/passager.service";
 
 @Component({
   selector: 'app-view-airfrance',
@@ -15,14 +16,14 @@ import {Vol} from "../../models/vol.model";
 })
 export class ViewAirFranceComponent {
   vols: Vol[] = [];
+  passagers: Passager[] = [];
 
-  constructor(private volService: VolService) {
+  constructor(private volService: VolService, private passagerService: PassagerService) {
   }
 
   convertToSeconds(date: Date): number {
     return Math.floor(date.getTime() / 1000);
   }
-
 
   onFiltersApplied(filters: { airport: any, startDate: Date, endDate: Date }) {
     const startDateS = this.convertToSeconds(filters.startDate);
@@ -35,4 +36,10 @@ export class ViewAirFranceComponent {
       });
   }
 
+  onVolSelected(vol: Vol) {
+    this.passagerService.getPassagers(vol.icao)
+      .subscribe(passagers => {
+        this.passagers = passagers;
+      });
+  }
 }

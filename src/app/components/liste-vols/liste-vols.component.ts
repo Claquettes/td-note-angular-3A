@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {Vol} from '../../models/vol.model';
 import {Input} from '@angular/core';
 import {VolComponent} from "../vol/vol.component";
@@ -13,4 +13,9 @@ import {CommonModule} from "@angular/common";
 })
 export class ListeVolsComponent {
   @Input() vols: Vol[] = [];
+  @Output() volSelected = new EventEmitter<Vol>();
+
+  selectVol(vol: Vol) {
+    this.volSelected.emit(vol);
+  }
 }
