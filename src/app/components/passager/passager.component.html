@@ -1,7 +1,7 @@
 <div class="passager-item">
   <img [src]="passager.image" alt="{{ passager.nom }}" class="passager-image">
   <h2 class="passager-name">{{ passager.nom }}</h2>
-  <p class="passager-classVol">{{ passager.classeVol }}</p>
+  <p class="passager-classVol" [appClasseVolColor]="passager.classeVol"    >{{ passager.classeVol }}</p>
   <mat-icon class="mat-icon">work_outline</mat-icon>
   <p class="passager-nbBagagesSoute">x{{ passager.nbBagagesSoute }}</p>
 </div>
