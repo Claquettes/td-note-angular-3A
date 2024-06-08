@@ -1,14 +1,7 @@
 <div class="passager-item">
   <img [src]="passager.image" alt="{{ passager.nom }}" class="passager-image">
-  <div class="passager-details">
-    <h2 class="passager-name">{{ passager.nom }}</h2>
-    <p class="passager-classVol">{{ passager.classeVol }}</p>
-    <div>
-      <span> <mat-icon class="mat-icon">work</mat-icon>
-      <p class="passager-nbBagagesSoute">x{{ passager.nbBagagesSoute }}</p>
-</span>
-
-    </div>
-
-  </div>
+  <h2 class="passager-name">{{ passager.nom }}</h2>
+  <p class="passager-classVol">{{ passager.classeVol }}</p>
+  <mat-icon class="mat-icon">work_outline</mat-icon>
+  <p class="passager-nbBagagesSoute">x{{ passager.nbBagagesSoute }}</p>
 </div>
