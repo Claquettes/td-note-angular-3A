@@ -1,8 +1,21 @@
 <div>
   <img [src]="'assets/' + vol.compagnie + '.png'" alt="{{vol.compagnie}} logo">
-  <p>{{ vol.icao }}</p>
-  <p>{{ vol.matricule | uppercase }}</p>
-  <p>{{ vol.compagnie | uppercase }}</p>
-  <p>{{ vol.aeroportDepart }} -> {{ vol.aeroportArrivee ? vol.aeroportArrivee : 'Inconnu' }}</p>
-  <p></p>
+  <div class="vol-icao">
+    <mat-icon>flight_takeoff</mat-icon>
+    <p>{{ vol.icao }}</p>
+  </div>
+  <div class="vol-avion">
+    <mat-icon>airplanemode_active</mat-icon>
+    <p>{{ vol.matricule | uppercase }}</p>
+  </div>
+  <div class="vol-compagnie">
+    <mat-icon>assignment</mat-icon>
+    <p>{{ vol.compagnie | uppercase }}</p>
+  </div>
+  <div class="vol-aeroports">
+    <mat-icon>room</mat-icon>
+    <p>{{ vol.aeroportDepart }}</p>
+    <mat-icon>arrow_right_alt</mat-icon>
+    <p>{{ vol.aeroportArrivee ? vol.aeroportArrivee : 'Inconnu' }}</p>
+  </div>
 </div>

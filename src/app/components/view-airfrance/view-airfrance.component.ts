@@ -28,7 +28,6 @@ export class ViewAirFranceComponent {
     const startDateS = this.convertToSeconds(filters.startDate);
     const endDateS = this.convertToSeconds(filters.endDate);
     const airport = filters.airport.nom;
-    console.log("11 AIRPORT: ", airport); // Modify this line
     this.volService.getVolsDepart(airport, startDateS, endDateS)
       .subscribe(vols => {
         console.log(vols);
