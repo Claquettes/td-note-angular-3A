@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { FiltresComponent } from '../filtres/filtres.component';
-import { ListeVolsComponent } from '../liste-vols/liste-vols.component';
-import { ListePassagersComponent } from '../liste-passagers/liste-passagers.component';
-import { VolService} from "../../services/vol.service";
+import {Component} from '@angular/core';
+import {FiltresComponent} from '../filtres/filtres.component';
+import {ListeVolsComponent} from '../liste-vols/liste-vols.component';
+import {ListePassagersComponent} from '../liste-passagers/liste-passagers.component';
+import {VolService} from "../../services/vol.service";
+import {Vol} from "../../models/vol.model";
+
 
 @Component({
   selector: 'app-view-airfrance',
@@ -12,6 +14,8 @@ import { VolService} from "../../services/vol.service";
   styleUrls: ['./view-airfrance.component.scss']
 })
 export class ViewAirFranceComponent {
+  vols: Vol[] = [];
+
   constructor(private volService: VolService) {
   }
 
@@ -20,13 +24,16 @@ export class ViewAirFranceComponent {
   }
 
 
+  onFiltersApplied(filters: { airport: any, startDate: Date, endDate: Date }) {
+    const startDateS = this.convertToSeconds(filters.startDate);
+    const endDateS = this.convertToSeconds(filters.endDate);
+    const airport = filters.airport.nom;
+    console.log("11 AIRPORT: ", airport); // Modify this line
+    this.volService.getVolsDepart(airport, startDateS, endDateS)
+      .subscribe(vols => {
+        console.log(vols);
+        this.vols = vols;
+      });
+  }
 
-  onFiltersApplied(filters: {airport: string, startDate: Date, endDate: Date}) {
-  const startDateS = this.convertToSeconds(filters.startDate);
-  const endDateS = this.convertToSeconds(filters.endDate);
-  this.volService.getVolsDepart(filters.airport, startDateS, endDateS)
-    .subscribe(vols => {
-      console.log(vols);
-    });
-}
 }

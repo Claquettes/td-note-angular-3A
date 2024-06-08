@@ -1,1 +1,8 @@
-<!-- Affichage d'un vol -->
+<div>
+  <img [src]="'assets/' + vol.compagnie + '.png'" alt="{{vol.compagnie}} logo">
+  <p>{{ vol.icao }}</p>
+  <p>{{ vol.matricule | uppercase }}</p>
+  <p>{{ vol.compagnie | uppercase }}</p>
+  <p>{{ vol.aeroportDepart }} -> {{ vol.aeroportArrivee ? vol.aeroportArrivee : 'Inconnu' }}</p>
+  <p></p>
+</div>
