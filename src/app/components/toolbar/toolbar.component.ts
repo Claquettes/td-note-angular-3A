@@ -15,9 +15,9 @@ export class ToolbarComponent {
   constructor(private _router: Router) { }
 
   toDecollages(): void {
-    this._router.navigateByUrl(`/decollages`);
+    this._router.navigateByUrl(`/flight/decollages`);
   }
   toAtterrissages(): void {
-    this._router.navigateByUrl(`/atterrissages`);
+    this._router.navigateByUrl(`/flight/atterrissages`);
   }
 }
