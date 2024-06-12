@@ -15,14 +15,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",  // Corrected builder
           "options": {
             "outputPath": "dist/angular-polytech-td5",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "main": "src/main.ts",  // Changed from 'browser' to 'main'
+            "polyfills": "src/polyfills.ts",  // Corrected polyfills path
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
