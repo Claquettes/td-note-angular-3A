@@ -36,16 +36,9 @@ import { EventEmitter } from '@angular/core';
 })
 export class FiltresComponent {
   @Output() filtersApplied = new EventEmitter<{airport: string, startDate: Date, endDate: Date}>();
-
   selectedAirport: string = '';
   startDate: Date = new Date();
   endDate: Date = new Date(this.startDate.getTime() + 3 * 24 * 60 * 60 * 1000);
   aeroports: IAeroport[] = AEROPORTS;
-
-  resetFilters() {
-    this.selectedAirport = '';
-    this.startDate = new Date();
-    this.endDate = new Date(this.startDate.getTime() + 3 * 24 * 60 * 60 * 1000);
-  }
 
 }
